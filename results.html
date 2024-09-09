@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Результаты теста EPBPT</title>
+    <title>Отправка email через SMTP.js</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,11 +20,6 @@
         }
         h1 {
             text-align: center;
-        }
-        .result {
-            font-size: 1.2em;
-            color: green;
-            margin-bottom: 20px;
         }
         .input-block {
             margin-bottom: 20px;
@@ -55,9 +50,9 @@
 <body>
 
 <div class="container">
-    <h1>Результаты теста EPBPT</h1>
+    <h1>Отправка email через SMTP.js</h1>
 
-    <!-- Блок для ввода ФИО и email -->
+    <!-- Форма ввода -->
     <div class="input-block">
         <label for="fullname">ФИО</label>
         <input type="text" id="fullname" name="fullname" placeholder="Введите ваше ФИО" required>
@@ -66,58 +61,31 @@
         <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
     </div>
 
-    <!-- Отображение результатов теста -->
-    <div class="result">
-        <p>Оценка личностных качеств (Section 1): <span id="section1Score"></span></p>
-        <p>Оценка рабочих моделей поведения (Section 2): <span id="section2Score"></span></p>
-        <p>Мотивация и достижения (Section 3): <span id="section3Score"></span></p>
-        <p>Стрессоустойчивость (Section 4): <span id="section4Score"></span></p>
-        <p>Адаптивность и гибкость (Section 5): <span id="section5Score"></span></p>
-    </div>
-
-    <button id="sendResults">Отправить результаты на почту</button>
+    <button id="sendResults">Отправить email</button>
 </div>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript">
-    (function(){
-        emailjs.init("Pfvtyb__Jx7zARrbKST9nbE"); // Ваш Public Key
-    })();
+<!-- SMTP.js -->
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 
-    // Отображение сохраненных данных
-    document.getElementById('section1Score').innerText = localStorage.getItem('section1Score') || 'Не доступно';
-    document.getElementById('section2Score').innerText = localStorage.getItem('section2Score') || 'Не доступно';
-    document.getElementById('section3Score').innerText = localStorage.getItem('section3Score') || 'Не доступно';
-    document.getElementById('section4Score').innerText = localStorage.getItem('section4Score') || 'Не доступно';
-    document.getElementById('section5Score').innerText = localStorage.getItem('section5Score') || 'Не доступно';
-
-    // Функция для отправки письма с результатами
+<script>
     document.getElementById('sendResults').addEventListener('click', function() {
         var fullname = document.getElementById('fullname').value;
         var email = document.getElementById('email').value;
-        var section1Score = localStorage.getItem('section1Score') || 'Не доступно';
-        var section2Score = localStorage.getItem('section2Score') || 'Не доступно';
-        var section3Score = localStorage.getItem('section3Score') || 'Не доступно';
-        var section4Score = localStorage.getItem('section4Score') || 'Не доступно';
-        var section5Score = localStorage.getItem('section5Score') || 'Не доступно';
 
-        var templateParams = {
-            fullname: fullname,
-            email: email,
-            section1Score: section1Score,
-            section2Score: section2Score,
-            section3Score: section3Score,
-            section4Score: section4Score,
-            section5Score: section5Score
-        };
-
-        emailjs.send('service_pw7adwe', 'template_eyrza0m', templateParams)
-            .then(function(response) {
-               alert('Результаты отправлены успешно!', response.status, response.text);
-            }, function(error) {
-               console.log('Ошибка при отправке результатов:', error);
-               alert('Ошибка при отправке результатов.');
-            });
+        // Отправка email через SMTP.js
+        Email.send({
+            Host: "smtp.elasticemail.com",  // Ваш SMTP сервер (Elastic Email)
+            Username: "irinagurkina170999@gmail.com",  // Ваш email (логин)
+            Password: "626092E1A656B0AE816A872CD73ECC8EEDA290D01F9A012380136703F3366EEDBB2CC9EBD0A65C8265A84323BFFD1D9C",  // Ваш API-ключ
+            To: 'irinagurkina170999@gmail.com',  // Получатель письма (ваш email)
+            From: email,  // Email отправителя (пользователь)
+            Subject: "Результаты теста от " + fullname,
+            Body: `ФИО: ${fullname}<br> Email: ${email}<br> Это текст письма.`
+        }).then(
+            message => alert("Письмо отправлено: " + message)  // Сообщение при успешной отправке
+        ).catch(
+            error => alert("Ошибка: " + error)  // Сообщение об ошибке
+        );
     });
 </script>
 
