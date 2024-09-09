@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPBPT Test</title>
-    <title>Section 1</title>
+    <title>EPBPT Test - Section 1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,11 +28,17 @@
             display: block;
             margin: 10px 0;
         }
-        input[type="radio"] {
+        /* Новый стиль для отступов между цифрами и радиокнопками */
+        .radio-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .radio-wrapper span {
             margin-right: 10px;
         }
         button {
-            margin-top: 20px;
+            margin-top: 40px;
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
@@ -50,110 +55,50 @@
 <div class="container">
     <h1>EPBPT Test - Section 1: Личностные характеристики</h1>
     <form id="section1Form">
-        <label>1. Я легко начинаю разговор с незнакомыми людьми.</label>
-        <input type="radio" name="q1" value="1">1
-        <input type="radio" name="q1" value="2">2
-        <input type="radio" name="q1" value="3">3
-        <input type="radio" name="q1" value="4">4
-        <input type="radio" name="q1" value="5">5
+        <label>1. 1.	Я легко начинаю разговор с незнакомыми людьми.</label>
+        <div class="radio-wrapper">
+            <span>1</span>
+            <input type="radio" name="q1" value="1">
+        </div>
+        <div class="radio-wrapper">
+            <span>2</span>
+            <input type="radio" name="q1" value="2">
+        </div>
+        <div class="radio-wrapper">
+            <span>3</span>
+            <input type="radio" name="q1" value="3">
+        </div>
+        <div class="radio-wrapper">
+            <span>4</span>
+            <input type="radio" name="q1" value="4">
+        </div>
+        <div class="radio-wrapper">
+            <span>5</span>
+            <input type="radio" name="q1" value="5">
+        </div>
 
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
+        <label>2. I enjoy learning new ways to solve tasks.</label>
+        <div class="radio-wrapper">
+            <span>1</span>
+            <input type="radio" name="q2" value="1">
+        </div>
+        <div class="radio-wrapper">
+            <span>2</span>
+            <input type="radio" name="q2" value="2">
+        </div>
+        <div class="radio-wrapper">
+            <span>3</span>
+            <input type="radio" name="q2" value="3">
+        </div>
+        <div class="radio-wrapper">
+            <span>4</span>
+            <input type="radio" name="q2" value="4">
+        </div>
+        <div class="radio-wrapper">
+            <span>5</span>
+            <input type="radio" name="q2" value="5">
+        </div>
 
-        <label>3. Я предпочитаю работать в одиночестве, а не в команде.</label>
-        <input type="radio" name="q3" value="1">1
-        <input type="radio" name="q3" value="2">2
-        <input type="radio" name="q3" value="3">3
-        <input type="radio" name="q3" value="4">4
-        <input type="radio" name="q3" value="5">5
-        
-        <label>4. Когда я сталкиваюсь с трудной задачей, я сразу ищу креативные решения.</label>
-        <input type="radio" name="q4" value="1">1
-        <input type="radio" name="q4" value="2">2
-        <input type="radio" name="q4" value="3">3
-        <input type="radio" name="q4" value="4">4
-        <input type="radio" name="q4" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
-
-        <label>2. Мне нравится изучать новые способы решения задач.</label>
-        <input type="radio" name="q2" value="1">1
-        <input type="radio" name="q2" value="2">2
-        <input type="radio" name="q2" value="3">3
-        <input type="radio" name="q2" value="4">4
-        <input type="radio" name="q2" value="5">5
         <button type="submit">Next Section</button>
     </form>
 </div>
@@ -167,7 +112,7 @@
 
         for (let [key, value] of formData.entries()) {
             section1Score += parseInt(value);
-            localStorage.setItem(key, value);  
+            localStorage.setItem(key, value);
         }
         localStorage.setItem('section1Score', section1Score);
         window.location.href = "section2.html";
