@@ -446,24 +446,29 @@
         
 
         <!-- Кнопка находится ниже всех вопросов -->
-        <button type="submit">Next Section</button>
+        <button type="submit">Завершить тест</button>
     </form>
 </div>
 
 <script>
-    document.getElementById('section1Form').addEventListener('submit', function(event) {
+    document.getElementById('section5Form').addEventListener('submit', function(event) {
         event.preventDefault();
 
         const formData = new FormData(this);
-        let section1Score = 0;
+        let section5Score = 0;  // Переменная для подсчета результата секции 5
 
+        // Проходим по всем данным формы и суммируем результаты
         for (let [key, value] of formData.entries()) {
-            section1Score += parseInt(value);
-            localStorage.setItem(key, value);
+            section5Score += parseInt(value);  // Суммируем значения ответов
+            localStorage.setItem(key, value);  // Сохраняем каждый ответ в localStorage
         }
-        localStorage.setItem('section5Score', section5Score);
-        window.location.href = "results.html";
+        localStorage.setItem('section5Score', section5Score);  // Сохраняем общий результат секции 5
+        window.location.href = "results.html";  // Переход на страницу с результатами
     });
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
