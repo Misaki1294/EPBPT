@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Результаты теста</title>
+    <title>Результаты теста EPBPT</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,6 +20,11 @@
         }
         h1 {
             text-align: center;
+        }
+        .result {
+            font-size: 1.2em;
+            color: green;
+            margin-bottom: 20px;
         }
         .input-block {
             margin-bottom: 20px;
@@ -45,16 +50,12 @@
         button:hover {
             background-color: #45a049;
         }
-        .result {
-            font-size: 1.2em;
-            color: green;
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Результаты теста для кандидатов</h1>
+    <h1>Результаты теста EPBPT</h1>
 
     <!-- Блок для ввода ФИО и email -->
     <div class="input-block">
@@ -65,13 +66,13 @@
         <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
     </div>
 
-    <!-- Отображение результатов теста (поля можно заполнить реальными результатами) -->
+    <!-- Отображение результатов теста -->
     <div class="result">
-        <p>Оценка личностных качеств: <span id="section1Score">75</span></p>
-        <p>Оценка рабочих моделей поведения: <span id="section2Score">80</span></p>
-        <p>Мотивация и достижения: <span id="section3Score">85</span></p>
-        <p>Стрессоустойчивость: <span id="section4Score">90</span></p>
-        <p>Адаптивность и гибкость: <span id="section5Score">70</span></p>
+        <p>Оценка личностных качеств (Section 1): <span id="section1Score"></span></p>
+        <p>Оценка рабочих моделей поведения (Section 2): <span id="section2Score"></span></p>
+        <p>Мотивация и достижения (Section 3): <span id="section3Score"></span></p>
+        <p>Стрессоустойчивость (Section 4): <span id="section4Score"></span></p>
+        <p>Адаптивность и гибкость (Section 5): <span id="section5Score"></span></p>
     </div>
 
     <button id="sendResults">Отправить результаты на почту</button>
@@ -83,15 +84,22 @@
         emailjs.init("HiJVd2N0M9XwyYaXJ"); // Ваш USER_ID
     })();
 
-    // Функция для отправки письма на вашу рабочую почту
+    // Отображение сохраненных данных
+    document.getElementById('section1Score').innerText = localStorage.getItem('section1Score') || 'Не доступно';
+    document.getElementById('section2Score').innerText = localStorage.getItem('section2Score') || 'Не доступно';
+    document.getElementById('section3Score').innerText = localStorage.getItem('section3Score') || 'Не доступно';
+    document.getElementById('section4Score').innerText = localStorage.getItem('section4Score') || 'Не доступно';
+    document.getElementById('section5Score').innerText = localStorage.getItem('section5Score') || 'Не доступно';
+
+    // Функция для отправки письма с результатами
     document.getElementById('sendResults').addEventListener('click', function() {
         var fullname = document.getElementById('fullname').value;
         var email = document.getElementById('email').value;
-        var section1Score = document.getElementById('section1Score').innerText;
-        var section2Score = document.getElementById('section2Score').innerText;
-        var section3Score = document.getElementById('section3Score').innerText;
-        var section4Score = document.getElementById('section4Score').innerText;
-        var section5Score = document.getElementById('section5Score').innerText;
+        var section1Score = localStorage.getItem('section1Score') || 'Не доступно';
+        var section2Score = localStorage.getItem('section2Score') || 'Не доступно';
+        var section3Score = localStorage.getItem('section3Score') || 'Не доступно';
+        var section4Score = localStorage.getItem('section4Score') || 'Не доступно';
+        var section5Score = localStorage.getItem('section5Score') || 'Не доступно';
 
         var templateParams = {
             fullname: fullname,
