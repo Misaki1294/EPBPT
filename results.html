@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отправка email через SMTP.js</title>
+    <title>Результаты теста</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,7 +28,7 @@
             display: block;
             margin-bottom: 10px;
         }
-        input[type="text"], input[type="email"] {
+        input[type="text"], input[type="email"], textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -50,43 +50,42 @@
 <body>
 
 <div class="container">
-    <h1>Отправка email через SMTP.js</h1>
+    <h1>Результаты теста</h1>
 
-    <!-- Форма ввода -->
-    <div class="input-block">
-        <label for="fullname">ФИО</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Введите ваше ФИО" required>
+    <!-- Форма отправки данных с использованием Formspree -->
+    <form action="https://formspree.io/f/xovabzlg" method="POST">
+        <!-- Поле для ввода email -->
+        <label>
+            Ваш email:
+            <input type="email" name="email" placeholder="Введите ваш email" required>
+        </label>
 
-        <label for="email">Ваш email</label>
-        <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
-    </div>
+        <!-- Отображение результатов теста -->
+        <label>
+            Результаты теста:
+            <textarea name="message" readonly>
+Личностные качества: ${localStorage.getItem('section1Score') || 'Не доступно'}
+Рабочие модели поведения: ${localStorage.getItem('section2Score') || 'Не доступно'}
+Мотивация и достижения: ${localStorage.getItem('section3Score') || 'Не доступно'}
+Стрессоустойчивость: ${localStorage.getItem('section4Score') || 'Не доступно'}
+Адаптивность и гибкость: ${localStorage.getItem('section5Score') || 'Не доступно'}
+            </textarea>
+        </label>
 
-    <button id="sendResults">Отправить email</button>
+        <!-- Кнопка отправки -->
+        <button type="submit">Отправить результаты</button>
+    </form>
 </div>
 
-<!-- SMTP.js -->
-<script src="https://smtpjs.com/v3/smtp.js"></script>
-
 <script>
-    document.getElementById('sendResults').addEventListener('click', function() {
-        var fullname = document.getElementById('fullname').value;
-        var email = document.getElementById('email').value;
-
-        // Отправка email через SMTP.js
-        Email.send({
-            Host: "smtp.elasticemail.com",  // Ваш SMTP сервер (Elastic Email)
-            Username: "irinagurkina170999@gmail.com",  // Ваш email (логин)
-            Password: "626092E1A656B0AE816A872CD73ECC8EEDA290D01F9A012380136703F3366EEDBB2CC9EBD0A65C8265A84323BFFD1D9C",  // Ваш API-ключ
-            To: 'irinagurkina170999@gmail.com',  // Получатель письма (ваш email)
-            From: email,  // Email отправителя (пользователь)
-            Subject: "Результаты теста от " + fullname,
-            Body: `ФИО: ${fullname}<br> Email: ${email}<br> Это текст письма.`
-        }).then(
-            message => alert("Письмо отправлено: " + message)  // Сообщение при успешной отправке
-        ).catch(
-            error => alert("Ошибка: " + error)  // Сообщение об ошибке
-        );
-    });
+    // Скрипт для заполнения данных в поле "Результаты теста"
+    document.querySelector('textarea[name="message"]').innerText = `
+Личностные качества: ${localStorage.getItem('section1Score') || 'Не доступно'}
+Рабочие модели поведения: ${localStorage.getItem('section2Score') || 'Не доступно'}
+Мотивация и достижения: ${localStorage.getItem('section3Score') || 'Не доступно'}
+Стрессоустойчивость: ${localStorage.getItem('section4Score') || 'Не доступно'}
+Адаптивность и гибкость: ${localStorage.getItem('section5Score') || 'Не доступно'}
+    `;
 </script>
 
 </body>
