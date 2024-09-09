@@ -25,10 +25,62 @@
             font-size: 1.2em;
             color: green;
         }
+        .input-block {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>EPBPT Test - Results</h1>
-    <div class="result" id="result
+
+    <!-- Блок для ввода ФИО и email -->
+    <div class="input-block">
+        <label for="fullname">ФИО</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Введите ваше ФИО" required>
+
+        <label for="email">Ваш email</label>
+        <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+    </div>
+
+    <div class="result">
+        <p>Personality Traits Score: <span id="section1Score"></span></p>
+        <p>Work Behavioral Models Score: <span id="section2Score"></span></p>
+        <p>Motivation and Achievements Score: <span id="section3Score"></span></p>
+        <p>Stress Resilience Score: <span id="section4Score"></span></p>
+        <p>Adaptability and Flexibility Score: <span id="section5Score"></span></p>
+    </div>
+
+    <button id="sendResults">Отправить результат на почту</button>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("HiJVd2N0M9XwyYaXJ"); // Ваш USER_ID
+    })();
+
+    // Отображение результатов
+    document.getElementById('
