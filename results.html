@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPBPT Test - Results</title>
+    <title>Результаты теста</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,10 +20,6 @@
         }
         h1 {
             text-align: center;
-        }
-        .result {
-            font-size: 1.2em;
-            color: green;
         }
         .input-block {
             margin-bottom: 20px;
@@ -49,14 +45,18 @@
         button:hover {
             background-color: #45a049;
         }
+        .result {
+            font-size: 1.2em;
+            color: green;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>EPBPT Test - Results</h1>
+    <h1>Результаты теста для кандидатов</h1>
 
-    <!-- Input Block for Full Name and Email -->
+    <!-- Блок для ввода ФИО и email -->
     <div class="input-block">
         <label for="fullname">ФИО</label>
         <input type="text" id="fullname" name="fullname" placeholder="Введите ваше ФИО" required>
@@ -65,16 +65,16 @@
         <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
     </div>
 
-    <!-- Display Test Scores -->
+    <!-- Отображение результатов теста (поля можно заполнить реальными результатами) -->
     <div class="result">
-        <p>Personality Traits Score: <span id="section1Score"></span></p>
-        <p>Work Behavioral Models Score: <span id="section2Score"></span></p>
-        <p>Motivation and Achievements Score: <span id="section3Score"></span></p>
-        <p>Stress Resilience Score: <span id="section4Score"></span></p>
-        <p>Adaptability and Flexibility Score: <span id="section5Score"></span></p>
+        <p>Оценка личностных качеств: <span id="section1Score">75</span></p>
+        <p>Оценка рабочих моделей поведения: <span id="section2Score">80</span></p>
+        <p>Мотивация и достижения: <span id="section3Score">85</span></p>
+        <p>Стрессоустойчивость: <span id="section4Score">90</span></p>
+        <p>Адаптивность и гибкость: <span id="section5Score">70</span></p>
     </div>
 
-    <button id="sendResults">Отправить результат на почту</button>
+    <button id="sendResults">Отправить результаты на почту</button>
 </div>
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
@@ -83,7 +83,7 @@
         emailjs.init("HiJVd2N0M9XwyYaXJ"); // Ваш USER_ID
     })();
 
-    // Function to send email on button click
+    // Функция для отправки письма на вашу рабочую почту
     document.getElementById('sendResults').addEventListener('click', function() {
         var fullname = document.getElementById('fullname').value;
         var email = document.getElementById('email').value;
@@ -107,7 +107,8 @@
             .then(function(response) {
                alert('Результаты отправлены успешно!', response.status, response.text);
             }, function(error) {
-               alert('Ошибка при отправке результатов.', error);
+               console.log('Ошибка при отправке результатов:', error);
+               alert('Ошибка при отправке результатов.');
             });
     });
 </script>
