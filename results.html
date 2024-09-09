@@ -28,7 +28,7 @@
             display: block;
             margin-bottom: 10px;
         }
-        input[type="text"], input[type="email"], textarea {
+        input[type="text"], input[type="email"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -50,27 +50,28 @@
 <body>
 
 <div class="container">
-    <h1>Результаты теста</h1>
+    <h1>Форма отправки результатов</h1>
 
     <!-- Форма отправки данных с использованием Formspree -->
     <form action="https://formspree.io/f/xovabzlg" method="POST">
+        <!-- Поле для ввода ФИО -->
+        <label>
+            Ваше ФИО:
+            <input type="text" name="fullname" placeholder="Введите ваше ФИО" required>
+        </label>
+
         <!-- Поле для ввода email -->
         <label>
             Ваш email:
             <input type="email" name="email" placeholder="Введите ваш email" required>
         </label>
 
-        <!-- Отображение результатов теста -->
-        <label>
-            Результаты теста:
-            <textarea name="message" readonly>
-Личностные качества: ${localStorage.getItem('section1Score') || 'Не доступно'}
-Рабочие модели поведения: ${localStorage.getItem('section2Score') || 'Не доступно'}
-Мотивация и достижения: ${localStorage.getItem('section3Score') || 'Не доступно'}
-Стрессоустойчивость: ${localStorage.getItem('section4Score') || 'Не доступно'}
-Адаптивность и гибкость: ${localStorage.getItem('section5Score') || 'Не доступно'}
-            </textarea>
-        </label>
+        <!-- Скрытые поля для передачи результатов теста -->
+        <input type="hidden" name="Личностные качества" id="section1Score">
+        <input type="hidden" name="Рабочие модели поведения" id="section2Score">
+        <input type="hidden" name="Мотивация и достижения" id="section3Score">
+        <input type="hidden" name="Стрессоустойчивость" id="section4Score">
+        <input type="hidden" name="Адаптивность и гибкость" id="section5Score">
 
         <!-- Кнопка отправки -->
         <button type="submit">Отправить результаты</button>
@@ -78,14 +79,12 @@
 </div>
 
 <script>
-    // Скрипт для заполнения данных в поле "Результаты теста"
-    document.querySelector('textarea[name="message"]').innerText = `
-Личностные качества: ${localStorage.getItem('section1Score') || 'Не доступно'}
-Рабочие модели поведения: ${localStorage.getItem('section2Score') || 'Не доступно'}
-Мотивация и достижения: ${localStorage.getItem('section3Score') || 'Не доступно'}
-Стрессоустойчивость: ${localStorage.getItem('section4Score') || 'Не доступно'}
-Адаптивность и гибкость: ${localStorage.getItem('section5Score') || 'Не доступно'}
-    `;
+    // Заполнение скрытых полей результатами теста из localStorage
+    document.getElementById('section1Score').value = localStorage.getItem('section1Score') || 'Не доступно';
+    document.getElementById('section2Score').value = localStorage.getItem('section2Score') || 'Не доступно';
+    document.getElementById('section3Score').value = localStorage.getItem('section3Score') || 'Не доступно';
+    document.getElementById('section4Score').value = localStorage.getItem('section4Score') || 'Не доступно';
+    document.getElementById('section5Score').value = localStorage.getItem('section5Score') || 'Не доступно';
 </script>
 
 </body>
