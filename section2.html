@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPBPT Test - Section 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>EPBPT Test - Section 2: Work Behavioral Models</h1>
+    <form id="section2Form">
+        <label>3. I prefer to follow clear instructions at work.</label>
+        <input type="radio" name="q3" value="1">1
+        <input type="radio" name="q3" value="2">2
+        <input type="radio" name="q3" value="3">3
+        <input type="radio" name="q3" value="4">4
+        <input type="radio" name="q3" value="5">5
+
+        <label>4. I take the initiative in most projects.</label>
+        <input type="radio" name="q4" value="1">1
+        <input type="radio" name="q4" value="2">2
+        <input type="radio" name="q4" value="3">3
+        <input type="radio" name="q4" value="4">4
+        <input type="radio" name="q4" value="5">5
+
+        <button type="submit">Next Section</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('section2Form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        let section2Score = 0;
+        
+        for (let [key, value] of formData.entries()) {
+            section2Score += parseInt(value);
+            localStorage.setItem(key, value);
+        }
+        localStorage.setItem('section2Score', section2Score);
+        window.location.href = "results.html";
+    });
+</script>
+
+</body>
+</html>
