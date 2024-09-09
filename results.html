@@ -79,12 +79,18 @@
 </div>
 
 <script>
+    // Функция для получения данных из localStorage с обработкой ошибок
+    function getScoreFromStorage(sectionName) {
+        const value = localStorage.getItem(sectionName);
+        return value ? value : 'Не доступно';  // Если значение не найдено, вернуть 'Не доступно'
+    }
+
     // Заполнение скрытых полей результатами теста из localStorage
-    document.getElementById('section1Score').value = localStorage.getItem('section1Score') || 'Не доступно';
-    document.getElementById('section2Score').value = localStorage.getItem('section2Score') || 'Не доступно';
-    document.getElementById('section3Score').value = localStorage.getItem('section3Score') || 'Не доступно';
-    document.getElementById('section4Score').value = localStorage.getItem('section4Score') || 'Не доступно';
-    document.getElementById('section5Score').value = localStorage.getItem('section5Score') || 'Не доступно';
+    document.getElementById('section1Score').value = getScoreFromStorage('section1Score');
+    document.getElementById('section2Score').value = getScoreFromStorage('section2Score');
+    document.getElementById('section3Score').value = getScoreFromStorage('section3Score');
+    document.getElementById('section4Score').value = getScoreFromStorage('section4Score');
+    document.getElementById('section5Score').value = getScoreFromStorage('section5Score');
 </script>
 
 </body>
